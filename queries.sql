@@ -33,3 +33,24 @@ ROLLBACK;
 --- Verify changes
 SELECT * from animals;
 
+
+/* Update species col based on a condition */
+--- Begin Transaction
+BEGIN;
+
+--- update species col for animals with names ending in mon
+UPDATE animals
+SET species = 'digimon'
+WHERE name LIKE '%mon';
+
+--- update species col for animals with names not ending in mon
+UPDATE animals
+SET species = 'pokemon'
+WHERE name NOT LIKE '%mon';
+
+--- commit transaction
+COMMIT;
+
+--- verify changes
+SELECT * from animals;
+
