@@ -54,3 +54,18 @@ COMMIT;
 --- verify changes
 SELECT * from animals;
 
+
+/* Delete all records in the animals table */
+BEGIN;
+
+--- delete all records
+DELETE from animals;
+
+--- verify all records are deleted
+SELECT * from animals;
+
+--- Rollback changes
+ROLLBACK;
+
+--- verify all records still exist
+SELECT * from animals;
