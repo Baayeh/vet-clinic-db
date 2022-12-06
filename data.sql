@@ -77,3 +77,34 @@ WHERE name NOT LIKE '%mon';
 
 --- commit transaction
 COMMIT;
+
+/* Update owners_id col in animals table */
+BEGIN;
+
+--- Sam Smith owns Agumon.
+UPDATE animals
+SET owners_id = 1
+WHERE name = 'Agumon';
+
+--- Jennifer Orwell owns Gabumon and Pikachu.
+UPDATE animals
+SET owners_id = 2
+WHERE name IN ('Gabumon', 'Pikachu');
+
+--- Bob owns Devimon and Plantmon.
+UPDATE animals
+SET owners_id = 3
+WHERE name IN ('Devimon', 'Plantmon');
+
+--- Melody Pond owns Charmander, Squirtle, and Blossom.
+UPDATE animals
+SET owners_id = 4
+WHERE name IN ('Charmander', 'Squirtle', 'Blossom');
+
+--- Dean Winchester owns Angemon and Boarmon.
+UPDATE animals
+SET owners_id = 5
+WHERE name IN ('Angemon', 'Boarmon');
+
+--- commit transaction
+COMMIT;
