@@ -54,9 +54,26 @@ INSERT INTO owners (full_name, age)
 VALUES ('Jodie Whittaker', 38);
 
 
-/* INSERT data into species */
+/* INSERT data into species table */
 INSERT INTO species (name) 
 VALUES ('Pokemon');
 
 INSERT INTO species (name) 
 VALUES ('Digimon');
+
+/* Update species_id col in animals table based on a condition */
+--- Begin Transaction
+BEGIN;
+
+--- update species col for animals with names ending in mon
+UPDATE animals
+SET species_id = 2
+WHERE name LIKE '%mon';
+
+--- update species col for animals with names not ending in mon
+UPDATE animals
+SET species_id = 1
+WHERE name NOT LIKE '%mon';
+
+--- commit transaction
+COMMIT;
