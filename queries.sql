@@ -127,34 +127,34 @@ ON animals.owners_id = owners.id
 WHERE owners_id = 4;
 
 --- List of all animals that are pokemon
-SELECT animals.name from animals
+SELECT animals.name AS Animal_Name, species.name AS Species_Name from animals
 JOIN species
 ON animals.species_id = species.id
 WHERE species_id = 1;
 
 --- List all owners and their animals
-SELECT full_name, name from owners
+SELECT full_name AS owner_name, name AS animal_name from owners
 FULL JOIN animals
 ON owners.id = animals.owners_id;
 
 --- How many animals are there per species?
-SELECT COUNT(animals), species.name from animals
+SELECT COUNT(animals) AS Num_of_animals, species.name AS species_name from animals
 JOIN species
 ON animals.species_id = species.id
 GROUP BY species.name;
 
 --- List all Digimon owned by Jennifer Orwell.
-SELECT animals.name, full_name from animals
+SELECT animals.name AS animal_name, full_name AS owner_name from animals
 JOIN owners ON animals.owners_id = owners.id
 WHERE owners_id = 2 AND species_id = 2;
 
 --- List all animals owned by Dean Winchester that haven't tried to escape.
-SELECT animals.name, full_name from animals
+SELECT animals.name AS animal_name, full_name AS owners_name from animals
 JOIN owners ON animals.owners_id = owners.id
 WHERE owners_id = 5 AND escape_attempts = 0;
 
 --- Who owns the most animals?
-SELECT full_name, COUNT(species_id) from animals
+SELECT full_name AS owners_name, COUNT(species_id) AS num_of_animals from animals
 FULL JOIN owners ON animals.owners_id = owners.id
 GROUP BY owners.full_name
 ORDER BY COUNT(name) DESC LIMIT 1;
