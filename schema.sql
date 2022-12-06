@@ -29,3 +29,11 @@ CREATE TABLE species (
 	name varchar(250),
 	PRIMARY KEY(id)
 );
+
+/* Modify animals table */
+ALTER TABLE animals
+DROP COLUMN species,
+ADD COLUMN species_id int,
+ADD COLUMN owners_id int,
+ADD CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id),
+ADD CONSTRAINT fk_owners FOREIGN KEY(owners_id) REFERENCES owners(id);
