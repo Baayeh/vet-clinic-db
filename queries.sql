@@ -124,7 +124,7 @@ GROUP BY species;
 SELECT name, full_name from animals
 JOIN owners
 ON animals.owners_id = owners.id
-WHERE owners_id = 4;
+WHERE owners.full_name = 'Melody Pond';
 
 --- List of all animals that are pokemon
 SELECT animals.name AS Animal_Name, species.name AS Species_Name from animals
