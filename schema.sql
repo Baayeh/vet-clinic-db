@@ -37,3 +37,29 @@ ADD COLUMN species_id int,
 ADD COLUMN owners_id int,
 ADD CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id),
 ADD CONSTRAINT fk_owners FOREIGN KEY(owners_id) REFERENCES owners(id);
+
+
+/* Vets Table */
+CREATE TABLE vets (
+  id BIGSERIAL NOT NULL PRIMARY KEY,
+  name VARCHAR(250) NOT NULL,
+  age INT NOT NULL,
+  date_of_graduation DATE NOT NULL
+);
+
+/* specializations join table */
+CREATE TABLE specializations (
+  species_id INT,
+  vet_id INT,
+  CONSTRAINT FK_species FOREIGN KEY(species_id) REFERENCES species(id),
+  CONSTRAINT FK_vets FOREIGN KEY(vet_id) REFERENCES vets(id)
+);
+
+/* Visits join table */
+CREATE TABLE visits (
+  animal_id INT,
+  vet_id INT,
+  date_of_visit DATE,
+  CONSTRAINT FK_animals FOREIGN KEY(animal_id) REFERENCES animals(id),
+  CONSTRAINT FK_vets FOREIGN KEY(vet_id) REFERENCES vets(id)
+);
