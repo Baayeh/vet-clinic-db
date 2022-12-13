@@ -19,6 +19,9 @@
 
 **Vet Clinic Database** is a database to manage data stored for a vet clinic. It uses PostgreSQL
 
+<img src="./Kwasi's ERD of Vet Clinic.png" />
+
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
